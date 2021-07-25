@@ -7,3 +7,4 @@ uploads
 .env
 logs
 .idea
+.eslintcache
