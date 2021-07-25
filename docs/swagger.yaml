@@ -1,0 +1,145 @@
+components:
+  schemas:
+    Child:
+      properties:
+        name:
+          type: "string"
+      type: "object"
+      required:
+        - "name"
+    CreateUserBody:
+      properties:
+        email:
+          type: "string"
+          minLength: 1
+          not:
+            type: "null"
+        password:
+          type: "string"
+        rePassword:
+          type: "string"
+      type: "object"
+      required:
+        - "email"
+        - "password"
+        - "rePassword"
+    UserResponse:
+      properties:
+        name:
+          type: "string"
+        hobbies:
+          items:
+            type: "string"
+          type: "array"
+      type: "object"
+      required:
+        - "name"
+        - "hobbies"
+    PaginationQuery:
+      properties:
+        limit:
+          exclusiveMinimum: true
+          minimum: 0
+          type: "number"
+        offset:
+          type: "number"
+      type: "object"
+      required:
+        - "limit"
+  securitySchemes:
+    basicAuth:
+      scheme: "basic"
+      type: "http"
+info:
+  title: "OpenAPI documentation"
+  version: "1.0.0"
+  description: "Generated with `routing-controllers-openapi`"
+openapi: "3.0.0"
+paths:
+  /api/v1/users:
+    get:
+      operationId: "UserController.getAll"
+      responses:
+        200:
+          content:
+            application/json: {}
+          description: "Successful response"
+      summary: "Return a list of users"
+      tags:
+        - "User"
+      security:
+        - basicAuth: []
+    post:
+      operationId: "UserController.post"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserBody"
+        description: "CreateUserBody"
+        required: true
+      responses:
+        201:
+          content:
+            application/json: {}
+          description: "Successful response"
+      summary: "Creates a new user"
+      tags:
+        - "User"
+      security:
+        - basicAuth: []
+  /api/v1/users/{id}:
+    get:
+      operationId: "UserController.getOne"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          schema:
+            type: "number"
+      responses:
+        200:
+          content:
+            application/json: {}
+          description: "Successful response"
+      summary: "Yaaa"
+      tags:
+        - "hmm"
+      security:
+        - basicAuth: []
+    put:
+      operationId: "UserController.put"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          schema:
+            type: "number"
+      responses:
+        200:
+          content:
+            application/json: {}
+          description: "Successful response"
+      summary: "Put"
+      tags:
+        - "User"
+      security:
+        - basicAuth: []
+    delete:
+      operationId: "UserController.remove"
+      parameters:
+        - in: "path"
+          name: "id"
+          required: true
+          schema:
+            type: "number"
+      responses:
+        200:
+          content:
+            application/json: {}
+          description: "Successful response"
+      summary: "Remove"
+      tags:
+        - "User"
+      security:
+        - basicAuth: []

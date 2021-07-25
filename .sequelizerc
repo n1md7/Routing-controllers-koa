@@ -1,0 +1,9 @@
+'use strict';
+
+const path = require('path');
+
+module.exports = {
+  'config': __dirname + '/config/sequelize.js',
+  'migrations-path': __dirname + '/database/migrations',
+  'seeders-path': __dirname + '/database/seeders',
+};
