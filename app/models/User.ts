@@ -54,8 +54,4 @@ export default class User extends Model<UserAttributes, UserCreateAttributes> {
 
   @BelongsTo(() => UserInfo)
   userInfo?: UserInfo;
-
-  get motherfucker() {
-    return this.email;
-  }
 }

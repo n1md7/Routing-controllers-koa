@@ -69,7 +69,6 @@ export default class UserController {
     return {
       a: dude?.email,
       b: dude?.id,
-      sucker: dude?.motherfucker,
     };
   }
 

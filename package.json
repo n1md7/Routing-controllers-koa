@@ -20,7 +20,8 @@
     "lint:fix": "eslint src --fix",
     "factory:seeder": "export NODE_ENV=factory-seeder && ts-node-dev src/factory/seeders/index.ts",
     "factory:seeder:win": "set NODE_ENV=factory-seeder && ts-node-dev src/factory/seeders/index.ts",
-    "format": "prettier --ignore-path ./.gitignore --write ."
+    "format": "prettier --ignore-path ./.gitignore --write .",
+    "eslint": "eslint ./ --cache --ignore-pattern .gitignore"
   },
   "keywords": [],
   "author": "",
@@ -63,9 +64,13 @@
   "devDependencies": {
     "@types/koa": "^2.13.4",
     "@types/koa__router": "^8.0.7",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
+    "pre-commit": "^1.2.2",
     "sequelize-cli": "^6.2.0"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  }
+  "pre-commit": [
+    "format"
+  ]
 }

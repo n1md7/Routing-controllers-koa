@@ -10,7 +10,7 @@ export default (files: Files) => async (ctx: Context, next: Next) => {
     ctx.status = error.status || 500;
     if (ctx.status === 404) {
       // Check file path
-      const [_file, ext] = ctx.path.split(".", 2);
+      const [, ext] = ctx.path.split(".", 2);
       if (["js", "css", "png", "svg", "jpg", "jpeg"].includes(ext)) {
         ctx.body = files.notFound;
         return;
